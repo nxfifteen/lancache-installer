@@ -151,7 +151,13 @@ cp $SCRIPT_DIR/configs/systemd/nginx.service /lib/systemd/system/nginx.service
 # Install sniproxy
 # cd /var/git/lancache-sniproxy/ && ./install.sh
 
-# If a logstash host is specified, install filebeat
-#if [ -n "$LOGSTASH_HOST" ]; then
-#    /usr/bin/envsubst '$LOGSTASH_HOST $CACHE_LOGS_DIRECTORY' < "$SCRIPT_DIR/configs/filebeat.yml.templ" > "/etc/filebeat/filebeat.yml"
-#fi
+ # If a logstash host is specified, install filebeat
+ if [ -n "$LOGSTASH_HOST" ]; then
+ 
+     # Get lancache-filebeat
+     rm -rf /var/git/lancache-filebeat
+     /usr/bin/git clone https://github.com/nxfifteen/lancache-filebeat.git /var/git/lancache-filebeat
+ 
+     # Run the install script
+     /var/git/lancache-filebeat/install.sh
+ fi
