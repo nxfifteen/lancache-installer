@@ -136,13 +136,13 @@ fi
 cp $SCRIPT_DIR/configs/systemd/nginx.service /lib/systemd/system/nginx.service
 
 # Load the new service file
-/bin/systemctl daemon-reload
+# /bin/systemctl daemon-reload
 
 # Set the nginx service to start at boot
-/bin/systemctl enable nginx
+# /bin/systemctl enable nginx
 
 # Start the nginx service
-/bin/systemctl start nginx
+# /bin/systemctl start nginx
 
 # Get sniproxy for passing HTTPS requests through to origin
 rm -rf /var/git/lancache-sniproxy
