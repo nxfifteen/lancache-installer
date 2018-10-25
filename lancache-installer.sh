@@ -145,14 +145,13 @@ cp $SCRIPT_DIR/configs/systemd/nginx.service /lib/systemd/system/nginx.service
 # /bin/systemctl start nginx
 
 # Get sniproxy for passing HTTPS requests through to origin
-rm -rf /var/git/lancache-sniproxy
-/usr/bin/git clone https://github.com/zeropingheroes/lancache-sniproxy.git /var/git/lancache-sniproxy
+# rm -rf /var/git/lancache-sniproxy
+# /usr/bin/git clone https://github.com/zeropingheroes/lancache-sniproxy.git /var/git/lancache-sniproxy
 
 # Install sniproxy
-cd /var/git/lancache-sniproxy/ && ./install.sh
+# cd /var/git/lancache-sniproxy/ && ./install.sh
 
 # If a logstash host is specified, install filebeat
 if [ -n "$LOGSTASH_HOST" ]; then
-
     /usr/bin/envsubst '$LOGSTASH_HOST $CACHE_LOGS_DIRECTORY' < "$SCRIPT_DIR/configs/filebeat.yml.templ" > "/etc/filebeat/filebeat.yml"
 fi
